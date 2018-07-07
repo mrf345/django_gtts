@@ -1,0 +1,4 @@
+Django
+gtts
+coverage
+python-coveralls
