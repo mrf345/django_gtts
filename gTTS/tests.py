@@ -11,11 +11,13 @@ class TranslationStorage_TestCase(TestCase):
     text = 'something to say'
 
     def test_speech_stored_and_returned(self):
-        resp = say(self.language, self.text)
+        resp = say(
+            self.language,
+            self.text).split('/')[-1:][0]
         self.assertEquals(
             Speech.objects.get(
-                language=language,
-                text=text)
+                language=self.language,
+                text=self.text).file_name
                 , resp)
 
     def test_dynamic_route(self):
