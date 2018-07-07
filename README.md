@@ -1,4 +1,7 @@
 <h1 align='center'> Django-Gtts </h1>
+<p align='center'>
+<a href='https://travis-ci.com/mrf345/django_gtts'><img src='https://travis-ci.com/mrf345/django_gtts.svg?branch=master' /></a><a href='https://coveralls.io/github/mrf345/django_gtts?branch=master'><img src='https://coveralls.io/repos/github/mrf345/django_gtts/badge.svg?branch=master' alt='Coverage Status' /></a>
+</p>
 <h3 align='center'>
     A Django app to add gTTS google text-to-speech to the template 
     and cache generated text-to-speech .mp3 files.
