@@ -1,6 +1,6 @@
 from django.test import TestCase, Client
 from json import loads
-from os import path
+from os import path, getcwd
 from .models import Speech
 from .templatetags.gTTS import say, temp_path
 from .cache import remove_cache
@@ -21,15 +21,17 @@ class TranslationStorage_TestCase(TestCase):
                 , resp)
 
     def test_dynamic_route(self):
-        resp = loads(
+        with open('gTTS' + loads(
             Client().get('/gtts/%s/%s' %(
                 self.language, self.text
             )).content
-        )['mp3']
+        )['mp3'], 'rb') as file:
+            resp = file.read()
+        with open('gTTS' + say(
+            self.language, self.text), 'rb') as file:
+            resp2 = file.read()
         self.assertEqual(
-            resp,
-            say(self.language, self.text)
-        )
+            resp, resp2)
     
     def test_dynamic_auth_route(self):
         resp = Client().get('/gtts_auth/%s/%s' %(

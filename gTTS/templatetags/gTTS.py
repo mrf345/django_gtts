@@ -28,7 +28,10 @@ def say(
             raise(TypeError("gTTS.say(%s) takes string" % h))
     try:
         ext_file = Speech.objects.get(text=text, language=language)
-        if not isfile(ext_file.file_name):
+        if not isfile(path.join(temp_path, ext_file.file_name)):
+            for file in Speech.objects.filter(
+                text=text, language=language).all():
+                file.delete()
             ext_file = None
     except Exception:
         ext_file = None
