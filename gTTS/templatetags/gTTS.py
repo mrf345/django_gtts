@@ -28,6 +28,8 @@ def say(
             raise(TypeError("gTTS.say(%s) takes string" % h))
     try:
         ext_file = Speech.objects.get(text=text, language=language)
+        if not isfile(ext_file.file_name):
+            ext_file = None
     except Exception:
         ext_file = None
     if not path.isdir(temp_path):  # creating temporary directory
@@ -35,7 +37,7 @@ def say(
             # makedirs in py2 missing exist_ok
             temp_path, exist_ok=True
         )
-    if not ext_file:
+    if ext_file is None:
         s = gTTS(text) if language == 'skip' else gTTS(
             text,
             language)
