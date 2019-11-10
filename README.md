@@ -29,7 +29,8 @@ INSTALLED_APPS = [
 > - `python manage.py makemigrations gTTS`
 > - `python manage.py migrate gTTS`
 
-#### - Inside jinja template:
+#### - Inside your [Django Template](https://docs.djangoproject.com/en/2.2/topics/templates/):
+> NOTE: `load gTTS` should be used once in the begining of every template that uses `say`, Or once in the begining of the base template.
 ```jinja
 {% load gTTS %}
 <audio
