@@ -5,6 +5,7 @@ from gtts import gTTS
 from os import path, makedirs, remove
 from datetime import datetime
 from sys import version_info
+from uuid import uuid4 as uuid
 from ..models import Speech
 
 cur_dir = path.join(path.dirname(path.abspath(__file__)), '..')
@@ -43,14 +44,9 @@ def say(
     if ext_file is None:
         s = gTTS(text) if language == 'skip' else gTTS(
             text,
-            language)
+            lang=language)
         while True:  # making sure audio file name is truly unique
-            fname = str(
-                datetime.utcnow()
-                ).replace('.', ''
-                ).replace('-', ''
-                ).replace(' ', ''
-                ).replace(':', '') + '.mp3'
+            fname = str(uuid()) + '.mp3'
             abp_fname = path.join(temp_path, fname)
             if not path.isfile(abp_fname):
                 break
