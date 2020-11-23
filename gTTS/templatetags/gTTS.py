@@ -1,6 +1,11 @@
 from django import template
 from django.conf import settings
-from django.contrib.staticfiles.templatetags.staticfiles import static
+try:
+    # Django 2
+    from django.contrib.staticfiles.templatetags.staticfiles import static
+except ModuleNotFoundError:
+    # Django 3
+    from django.templatetags.static import static
 from gtts import gTTS
 from os import path, makedirs, remove
 from datetime import datetime
