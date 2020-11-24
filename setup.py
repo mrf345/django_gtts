@@ -15,10 +15,10 @@ with open(path.join(path.abspath(path.dirname(__file__)), 'README.md'),
 
 setup(
     name='Django-Gtts',
-    version='0.3',
+    version='0.4',
     packages=find_packages(),
     url='https://github.com/mrf345/django_gtts/',
-    download_url='https://github.com/mrf345/django_gtts/archive/0.3.tar.gz',
+    download_url='https://github.com/mrf345/django_gtts/archive/0.4.tar.gz',
     license='MIT',
     author='Mohamed Feddad',
     author_email='mrf345@gmail.com',
