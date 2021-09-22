@@ -1,4 +1,4 @@
-Django==3.1.3
+Django==3.1.13
 gtts
 coverage
 python-coveralls
